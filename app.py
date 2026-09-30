@@ -43,24 +43,24 @@ remove_files(7)
 
 
 
-st.title("Reconocimiento Óptico de Caracteres")
-st.subheader("Elige la fuente de la imágen, esta puede venir de la cámara o cargando un archivo")
+st.title("Lector de Material Técnico en Inglés")
+st.subheader("Fotografía un párrafo de tu bibliografía, paper o documentación en inglés — te lo traduzco y te lo leo en voz alta.")
 
 cam_ = st.checkbox("Usar Cámara")
 
 if cam_ :
-   img_file_buffer = st.camera_input("Toma una Foto")
+   img_file_buffer = st.camera_input("Toma una foto del texto en inglés")
 else :
    img_file_buffer = None
    
 with st.sidebar:
-      st.subheader("Procesamiento para Cámara")
+      st.subheader("Ajustes de captura")
       filtro = st.radio("Filtro para imagen con cámara",('Sí', 'No'))
 
-bg_image = st.file_uploader("Cargar Imagen:", type=["png", "jpg"])
+bg_image = st.file_uploader("O sube una captura de pantalla / foto del texto:", type=["png", "jpg"])
 if bg_image is not None:
     uploaded_file=bg_image
-    st.image(uploaded_file, caption='Imagen cargada.', use_container_width=True)
+    st.image(uploaded_file, caption='Texto cargado.', use_container_width=True)
     
     # Guardar la imagen en el sistema de archivos
     with open(uploaded_file.name, 'wb') as f:
@@ -90,7 +90,7 @@ if img_file_buffer is not None:
     st.write(text) 
 
 with st.sidebar:
-      st.subheader("Parámetros de traducción")
+      st.subheader("Traduce y escucha")
       
       try:
           os.mkdir("temp")
@@ -101,7 +101,7 @@ with st.sidebar:
       
       #text = st.text_input("Enter text")
       in_lang = st.selectbox(
-          "Seleccione el lenguaje de entrada",
+          "Idioma del texto capturado",
           ("Ingles", "Español", "Bengali", "koreano", "Mandarin", "Japones"),
       )
       if in_lang == "Ingles":
@@ -118,7 +118,7 @@ with st.sidebar:
           input_language = "ja"
       
       out_lang = st.selectbox(
-          "Select your output language",
+          "Idioma en el que quieres escucharlo",
           ("Ingles", "Español", "Bengali", "koreano", "Mandarin", "Japones"),
       )
       if out_lang == "Ingles":
@@ -135,7 +135,7 @@ with st.sidebar:
           output_language = "ja"
       
       english_accent = st.selectbox(
-          "Seleccione el acento",
+          "Acento (aplica si escuchas en inglés)",
           (
               "Default",
               "India",
@@ -166,9 +166,9 @@ with st.sidebar:
       elif english_accent == "South Africa":
           tld = "co.za"
 
-      display_output_text = st.checkbox("Mostrar texto")
+      display_output_text = st.checkbox("Mostrar el texto traducido")
 
-      if st.button("convert"):
+      if st.button("Generar audio"):
           result, output_text = text_to_speech(input_language, output_language, text, tld)
           audio_file = open(f"temp/{result}.mp3", "rb")
           audio_bytes = audio_file.read()
@@ -178,10 +178,3 @@ with st.sidebar:
           if display_output_text:
               st.markdown(f"## Texto de salida:")
               st.write(f" {output_text}")
-
-
-
-
- 
-    
-    
