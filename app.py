@@ -41,7 +41,80 @@ def remove_files(n):
 remove_files(7)
   
 
+st.markdown("""
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Crimson+Text:wght@400;600&display=swap');
 
+.stApp {
+    background-color: #2B1D14;
+    background-image:
+        repeating-linear-gradient(90deg, rgba(0,0,0,0.15) 0px, rgba(0,0,0,0.15) 2px, transparent 2px, transparent 90px),
+        linear-gradient(180deg, #3A2A1C 0%, #2B1D14 100%);
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif !important;
+    color: #D8B26E !important;
+    text-shadow: 1px 1px 0px #1A110B;
+}
+
+p, li, label, div[data-testid="stMarkdownContainer"], .stMarkdown {
+    font-family: 'Crimson Text', serif !important;
+    font-size: 1.2rem !important;
+    color: #EDE0CC !important;
+}
+
+section[data-testid="stSidebar"] {
+    background-color: #241811;
+    border-right: 4px solid #5C3A21;
+}
+
+div[data-testid="stImage"] img {
+    border: 12px solid #4A3320;
+    outline: 2px solid #D8B26E;
+    outline-offset: -8px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+}
+
+div[data-testid="stFileUploader"], div[data-testid="stCameraInput"] {
+    background-color: #241811;
+    border: 2px dashed #8A6A3D !important;
+    border-radius: 6px;
+    padding: 10px;
+}
+
+div[data-baseweb="select"] > div {
+    font-family: 'Crimson Text', serif !important;
+    background-color: #3A2A1C !important;
+    color: #EDE0CC !important;
+    border: 1.5px solid #8A6A3D !important;
+    border-radius: 3px !important;
+}
+
+.stButton button {
+    font-family: 'Playfair Display', serif !important;
+    background-color: #5C3A21 !important;
+    color: #D8B26E !important;
+    border: 2px solid #D8B26E !important;
+    border-radius: 4px !important;
+    padding: 8px 22px !important;
+}
+.stButton button:hover {
+    background-color: #6E4626 !important;
+}
+
+div[data-testid="stAlert"] {
+    background-color: #3A2A1C !important;
+    border-left: 4px solid #D8B26E !important;
+}
+
+audio {
+    filter: sepia(20%);
+    border: 1.5px solid #8A6A3D;
+    border-radius: 4px;
+}
+</style>
+""", unsafe_allow_html=True)
 
 st.title("Lector de Material Técnico Multilingüe")
 st.subheader("Fotografía un párrafo de tu bibliografía o documentación técnica — en inglés, español, bengalí, coreano, mandarín o japonés — y te lo traduzco y leo en voz alta.")
