@@ -43,13 +43,13 @@ remove_files(7)
 
 
 
-st.title("Lector de Material Técnico en Inglés")
-st.subheader("Fotografía un párrafo de tu bibliografía, paper o documentación en inglés — te lo traduzco y te lo leo en voz alta.")
+st.title("Lector de Material Técnico Multilingüe")
+st.subheader("Fotografía un párrafo de tu bibliografía o documentación técnica — en inglés, español, bengalí, coreano, mandarín o japonés — y te lo traduzco y leo en voz alta.")
 
 cam_ = st.checkbox("Usar Cámara")
 
 if cam_ :
-   img_file_buffer = st.camera_input("Toma una foto del texto en inglés")
+   img_file_buffer = st.camera_input("Toma una foto del texto")
 else :
    img_file_buffer = None
    
@@ -79,7 +79,7 @@ if img_file_buffer is not None:
     cv2_img = cv2.imdecode(np.frombuffer(bytes_data, np.uint8), cv2.IMREAD_COLOR)
 
     
-    if filtro == 'Con Filtro':
+    if filtro == 'Sí':
          cv2_img=cv2.bitwise_not(cv2_img)
     else:
         cv2_img= cv2_img
@@ -129,7 +129,7 @@ with st.sidebar:
           output_language = "bn"
       elif out_lang == "koreano":
           output_language = "ko"
-      elif out_lang == "Chinese":
+      elif out_lang == "Mandarin":
           output_language = "zh-cn"
       elif out_lang == "Japones":
           output_language = "ja"
